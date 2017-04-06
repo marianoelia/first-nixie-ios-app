@@ -1,23 +1,62 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="nixieControl1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgb-Cf-7Gc">
+                                <rect key="frame" x="161.66666666666666" y="353" width="91" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MRO-wr-EdN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="OYB-b2-A0d"/>
+                                    <constraint firstAttribute="width" constant="91" id="R0M-6K-Js5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="91" id="gBA-Pp-Rqw"/>
+                                </constraints>
+                                <state key="normal" title="Setup Device"/>
+                                <connections>
+                                    <action selector="startDeviceSetup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ri-6E-9Fc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2e-hg-8kt">
+                                <rect key="frame" x="132" y="420" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Z6h-WD-EzW"/>
+                                    <constraint firstAttribute="height" constant="30" id="xCI-ok-aIn"/>
+                                </constraints>
+                                <state key="normal" title="Read Variable"/>
+                                <connections>
+                                    <action selector="readVariableButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWT-MX-4hQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w2e-hg-8kt" secondAttribute="bottom" constant="286" id="VVj-PX-yEG"/>
+                            <constraint firstItem="Sgb-Cf-7Gc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZkR-RK-e1y"/>
+                            <constraint firstItem="w2e-hg-8kt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="joB-DV-5nL"/>
+                            <constraint firstItem="Sgb-Cf-7Gc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="prv-E8-WTK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startDeviceSetup" destination="ZkR-RK-e1y" id="ER6-ic-54f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
