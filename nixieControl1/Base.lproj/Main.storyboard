@@ -21,45 +21,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgb-Cf-7Gc">
-                                <rect key="frame" x="161.66666666666666" y="353" width="91" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="MRO-wr-EdN"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="OYB-b2-A0d"/>
-                                    <constraint firstAttribute="width" constant="91" id="R0M-6K-Js5"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="91" id="gBA-Pp-Rqw"/>
-                                </constraints>
-                                <state key="normal" title="Setup Device"/>
-                                <connections>
-                                    <action selector="startDeviceSetup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ri-6E-9Fc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2e-hg-8kt">
-                                <rect key="frame" x="132" y="420" width="150" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Z6h-WD-EzW"/>
-                                    <constraint firstAttribute="height" constant="30" id="xCI-ok-aIn"/>
-                                </constraints>
-                                <state key="normal" title="Read Variable"/>
-                                <connections>
-                                    <action selector="readVariableButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWT-MX-4hQ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YZY-oI-hfk">
+                                <rect key="frame" x="47" y="64" width="321" height="557"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sgb-Cf-7Gc">
+                                        <rect key="frame" x="115" y="0.0" width="91" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="MRO-wr-EdN"/>
+                                            <constraint firstAttribute="width" constant="91" id="R0M-6K-Js5"/>
+                                        </constraints>
+                                        <state key="normal" title="Setup Device"/>
+                                        <connections>
+                                            <action selector="startDeviceSetup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ri-6E-9Fc"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="CVR-5G-Z0g">
+                                        <rect key="frame" x="60" y="70" width="201" height="21"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T0-uL-QkE">
+                                                <rect key="frame" x="0.0" y="0.0" width="133" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="4sY-0D-02m"/>
+                                                    <constraint firstAttribute="width" constant="133" id="GHF-Iu-MKK"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Blue LED Toggle">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFF-80-WXm">
+                                                <rect key="frame" x="152" y="0.0" width="51" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="49" id="W62-ah-gTX"/>
+                                                    <constraint firstAttribute="height" constant="31" id="cdr-4y-a6N"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="blueLEDSwitched:" destination="BYZ-38-t0r" eventType="valueChanged" id="xzg-vK-tg5"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2e-hg-8kt">
+                                        <rect key="frame" x="85" y="131" width="151" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Z6h-WD-EzW"/>
+                                            <constraint firstAttribute="height" constant="30" id="xCI-ok-aIn"/>
+                                        </constraints>
+                                        <state key="normal" title="Scramble"/>
+                                        <connections>
+                                            <action selector="readVariableButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWT-MX-4hQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Zu-KY-COh">
+                                        <rect key="frame" x="118" y="201" width="85" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="TqR-2Y-hbs"/>
+                                            <constraint firstAttribute="height" constant="30" id="j36-k3-K8Y"/>
+                                        </constraints>
+                                        <state key="normal" title="Show Date"/>
+                                        <connections>
+                                            <action selector="showDate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ct4-rZ-XRe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sad-9T-jb6">
+                                        <rect key="frame" x="111" y="271" width="99" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="EL5-Oa-yfx"/>
+                                            <constraint firstAttribute="width" constant="98" id="OCI-eI-5Q9"/>
+                                        </constraints>
+                                        <state key="normal" title="Start Effect"/>
+                                        <connections>
+                                            <action selector="startEffect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IMH-hU-8XE"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOH-Mu-cLQ">
+                                        <rect key="frame" x="0.0" y="341" width="321" height="216"/>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w2e-hg-8kt" secondAttribute="bottom" constant="286" id="VVj-PX-yEG"/>
-                            <constraint firstItem="Sgb-Cf-7Gc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZkR-RK-e1y"/>
-                            <constraint firstItem="w2e-hg-8kt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="joB-DV-5nL"/>
-                            <constraint firstItem="Sgb-Cf-7Gc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="prv-E8-WTK"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="startDeviceSetup" destination="ZkR-RK-e1y" id="ER6-ic-54f"/>
+                        <outlet property="blueLedSwitch" destination="sFF-80-WXm" id="uF3-0I-9ie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="40.579710144927539" y="44.836956521739133"/>
         </scene>
     </scenes>
 </document>

@@ -14,9 +14,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var startDeviceSetup: NSLayoutConstraint!
 
+    @IBOutlet weak var blueLedSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = UIColor.lightGray
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +27,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
+    //Used for initially setting up device
     @IBAction func startDeviceSetup(_ sender: Any) {
         
         let setupController = SparkSetupMainController()
@@ -32,7 +35,7 @@ class ViewController: UIViewController {
         
     }
     
-    
+    //Call scramble
     @IBAction func readVariableButtonTapped(_ sender: Any) {
         SparkCloud.sharedInstance().getDevices { (sparkDevicesList : [Any]?, error :Error?) -> Void in
             // 2
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
                     if device.name == "myDevice"
                     {
                         // 4
-                        device.callFunction("digitalwrite", withArguments: ["D6","HIGH"], completion: { (resultCode :NSNumber?, error : Error?) -> Void in
+                        device.callFunction("Scramble", withArguments: ["on"], completion: { (resultCode :NSNumber?, error : Error?) -> Void in
                             // 5
                            print("Called a function on myDevice")
                         })
@@ -56,7 +59,116 @@ class ViewController: UIViewController {
     }
     
     
+    
+    @IBAction func blueLEDSwitched(_ sender: Any) {
+        SparkCloud.sharedInstance().getDevices { (sparkDevicesList : [Any]?, error :Error?) -> Void in
+            // 2
+            if let sparkDevices = sparkDevicesList as? [SparkDevice]
+            {
+                print(sparkDevices)
+                // 3
+                for device in sparkDevices
+                {
+                    if device.name == "myDevice"
+                    {
+                        if self.blueLedSwitch.isOn{
+                            device.callFunction("BlueLEDs", withArguments: ["on"], completion: { (resultCode :NSNumber?, error : Error?) -> Void in
+                        })
+                            print("Led is on")
+                        }
+                                else {
+                                device.callFunction("BlueLEDs", withArguments: ["off"], completion: { (resultCode :NSNumber?, error : Error?) -> Void in
+                                })
+                            print("LED is off")
+                                }
+                        // 4
+                        
+                            // 5
+                            print("Called a function on myDevice")
+                    
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    @IBAction func showDate(_ sender: Any) {
+        SparkCloud.sharedInstance().getDevices { (sparkDevicesList : [Any]?, error :Error?) -> Void in
+            // 2
+            if let sparkDevices = sparkDevicesList as? [SparkDevice]
+            {
+                print(sparkDevices)
+                // 3
+                for device in sparkDevices
+                {
+                    if device.name == "myDevice"
+                    {
+                        // 4
+                        device.callFunction("Date", withArguments: ["on"], completion: { (resultCode :NSNumber?, error : Error?) -> Void in
+                            // 5
+                            print("Called a function on myDevice")
+                        })
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func startEffect(_ sender: Any) {
+    
+        SparkCloud.sharedInstance().getDevices { (sparkDevicesList : [Any]?, error :Error?) -> Void in
+            // 2
+            if let sparkDevices = sparkDevicesList as? [SparkDevice]
+            {
+                print(sparkDevices)
+                // 3
+                for device in sparkDevices
+                {
+                    if device.name == "myDevice"
+                    {
+                        // 4
+                        device.callFunction("Start Effect", withArguments: ["on"], completion: { (resultCode :NSNumber?, error : Error?) -> Void in
+                            // 5
+                            print("Called a function on myDevice")
+                        })
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
-
 
 
